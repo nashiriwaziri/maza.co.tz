@@ -1,0 +1,4196 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>MyPlatform | Multi-System Platform</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+
+/* =========================================================
+   ROOT
+========================================================= */
+
+:root{
+  --primary:#2563eb;
+  --primary-dark:#1d4ed8;
+  --primary-light:#eff6ff;
+
+  --success:#16a34a;
+  --warning:#f59e0b;
+  --danger:#dc2626;
+
+  --bg:#f5f7fb;
+  --surface:#ffffff;
+  --surface-2:#f8fafc;
+
+  --text:#0f172a;
+  --muted:#64748b;
+
+  --border:#e2e8f0;
+
+  --radius:18px;
+  --shadow:0 10px 30px rgba(15,23,42,.08);
+  --transition:.25s ease;
+}
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
+}
+
+button,
+input{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+/* =========================================================
+   UTILITIES
+========================================================= */
+
+.hidden{
+  display:none !important;
+}
+
+.container{
+  width:min(1200px,92%);
+  margin:auto;
+}
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.btn{
+  border:0;
+  border-radius:12px;
+  padding:12px 18px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+  font-weight:700;
+  transition:var(--transition);
+}
+
+.btn:hover{
+  transform:translateY(-1px);
+}
+
+.btn-primary{
+  background:var(--primary);
+  color:white;
+}
+
+.btn-primary:hover{
+  background:var(--primary-dark);
+}
+
+.btn-light{
+  background:var(--primary-light);
+  color:var(--primary);
+}
+
+.btn-danger{
+  background:#fee2e2;
+  color:var(--danger);
+}
+
+.btn-success{
+  background:#dcfce7;
+  color:#15803d;
+}
+
+.btn-outline{
+  background:white;
+  border:1px solid var(--border);
+  color:var(--text);
+}
+
+/* =========================================================
+   LANDING NAVBAR
+========================================================= */
+
+.public-nav{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(15px);
+  border-bottom:1px solid var(--border);
+}
+
+.nav-inner{
+  min-height:72px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:20px;
+  font-weight:800;
+}
+
+.logo-icon{
+  width:42px;
+  height:42px;
+  border-radius:12px;
+  display:grid;
+  place-items:center;
+  background:var(--primary);
+  color:white;
+}
+
+.nav-actions{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+  padding:80px 0 60px;
+  background:
+    radial-gradient(circle at top right,#dbeafe 0,transparent 35%),
+    radial-gradient(circle at bottom left,#e0e7ff 0,transparent 30%),
+    white;
+}
+
+.hero-content{
+  text-align:center;
+  max-width:850px;
+  margin:auto;
+}
+
+.hero-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 14px;
+  border-radius:50px;
+  background:var(--primary-light);
+  color:var(--primary);
+  font-size:13px;
+  font-weight:700;
+  margin-bottom:20px;
+}
+
+.hero h1{
+  font-size:clamp(36px,6vw,64px);
+  line-height:1.05;
+  letter-spacing:-2px;
+  margin-bottom:20px;
+}
+
+.hero h1 span{
+  color:var(--primary);
+}
+
+.hero p{
+  max-width:700px;
+  margin:auto;
+  color:var(--muted);
+  font-size:17px;
+  line-height:1.7;
+}
+
+.hero-actions{
+  margin-top:30px;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+/* =========================================================
+   SYSTEM SECTION
+========================================================= */
+
+.system-section{
+  padding:55px 0 80px;
+}
+
+.section-heading{
+  text-align:center;
+  margin-bottom:30px;
+}
+
+.section-heading h2{
+  font-size:32px;
+  margin-bottom:8px;
+}
+
+.section-heading p{
+  color:var(--muted);
+}
+
+.system-toolbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  margin-bottom:25px;
+  flex-wrap:wrap;
+}
+
+.search-box{
+  position:relative;
+  flex:1;
+  max-width:450px;
+}
+
+.search-box i{
+  position:absolute;
+  left:15px;
+  top:50%;
+  transform:translateY(-50%);
+  color:var(--muted);
+}
+
+.search-box input{
+  width:100%;
+  border:1px solid var(--border);
+  background:white;
+  border-radius:12px;
+  padding:13px 15px 13px 43px;
+  outline:none;
+}
+
+.search-box input:focus{
+  border-color:var(--primary);
+}
+
+/* =========================================================
+   SYSTEM GRID
+========================================================= */
+
+.system-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
+  gap:22px;
+}
+
+.system-card{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:25px;
+  box-shadow:var(--shadow);
+  transition:var(--transition);
+  position:relative;
+  overflow:hidden;
+}
+
+.system-card:hover{
+  transform:translateY(-5px);
+  border-color:#bfdbfe;
+}
+
+.system-card-top{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  margin-bottom:20px;
+}
+
+.system-icon{
+  width:58px;
+  height:58px;
+  border-radius:16px;
+  display:grid;
+  place-items:center;
+  color:white;
+  font-size:23px;
+}
+
+.system-status{
+  font-size:11px;
+  font-weight:700;
+  padding:6px 9px;
+  border-radius:30px;
+  background:#dcfce7;
+  color:#15803d;
+}
+
+.system-card h3{
+  font-size:20px;
+  margin-bottom:9px;
+}
+
+.system-card p{
+  color:var(--muted);
+  line-height:1.6;
+  min-height:52px;
+  font-size:14px;
+}
+
+.system-meta{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin:18px 0;
+}
+
+.meta-item{
+  font-size:12px;
+  background:var(--surface-2);
+  border-radius:8px;
+  padding:7px 9px;
+  color:var(--muted);
+}
+
+.system-card .btn{
+  width:100%;
+}
+
+/* =========================================================
+   FEATURES
+========================================================= */
+
+.features{
+  padding:80px 0;
+  background:white;
+}
+
+.features-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+}
+
+.feature-card{
+  padding:25px;
+  border:1px solid var(--border);
+  border-radius:16px;
+}
+
+.feature-icon{
+  width:48px;
+  height:48px;
+  border-radius:13px;
+  display:grid;
+  place-items:center;
+  background:var(--primary-light);
+  color:var(--primary);
+  margin-bottom:18px;
+}
+
+.feature-card h3{
+  margin-bottom:8px;
+}
+
+.feature-card p{
+  color:var(--muted);
+  line-height:1.6;
+  font-size:14px;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+  background:#0f172a;
+  color:white;
+  padding:30px 0;
+}
+
+.footer-inner{
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+.footer-inner p{
+  color:#94a3b8;
+  font-size:13px;
+}
+
+/* =========================================================
+   AUTH SCREEN
+========================================================= */
+
+.auth-screen{
+  min-height:100vh;
+  display:grid;
+  place-items:center;
+  padding:25px;
+  background:
+    radial-gradient(circle at top left,#dbeafe,transparent 35%),
+    var(--bg);
+}
+
+.auth-card{
+  width:min(440px,100%);
+  background:white;
+  border:1px solid var(--border);
+  border-radius:22px;
+  padding:30px;
+  box-shadow:var(--shadow);
+}
+
+.auth-logo{
+  text-align:center;
+  margin-bottom:25px;
+}
+
+.auth-logo .logo-icon{
+  margin:auto auto 12px;
+}
+
+.auth-logo h2{
+  margin-bottom:6px;
+}
+
+.auth-logo p{
+  color:var(--muted);
+  font-size:14px;
+}
+
+.form-group{
+  margin-bottom:17px;
+}
+
+.form-group label{
+  display:block;
+  margin-bottom:7px;
+  font-size:13px;
+  font-weight:700;
+}
+
+.form-group input{
+  width:100%;
+  padding:13px 14px;
+  border:1px solid var(--border);
+  border-radius:11px;
+  outline:none;
+}
+
+.form-group input:focus{
+  border-color:var(--primary);
+}
+
+.auth-card .btn{
+  width:100%;
+  margin-top:5px;
+}
+
+.auth-switch{
+  text-align:center;
+  margin-top:20px;
+  font-size:13px;
+  color:var(--muted);
+}
+
+.auth-switch button{
+  border:0;
+  background:none;
+  color:var(--primary);
+  font-weight:700;
+}
+
+/* =========================================================
+   APP LAYOUT
+========================================================= */
+
+.app-screen{
+  min-height:100vh;
+  display:flex;
+}
+
+.sidebar{
+  width:260px;
+  background:#0f172a;
+  color:white;
+  position:fixed;
+  inset:0 auto 0 0;
+  z-index:900;
+  display:flex;
+  flex-direction:column;
+  transition:var(--transition);
+}
+
+.sidebar-logo{
+  padding:22px;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.sidebar-logo .logo{
+  color:white;
+}
+
+.sidebar-system{
+  margin:15px;
+  padding:14px;
+  border-radius:14px;
+  background:rgba(255,255,255,.07);
+}
+
+.sidebar-system small{
+  display:block;
+  color:#94a3b8;
+  margin-bottom:5px;
+  font-size:11px;
+}
+
+.sidebar-system strong{
+  font-size:14px;
+}
+
+.sidebar-nav{
+  flex:1;
+  padding:10px;
+  overflow:auto;
+}
+
+.nav-label{
+  font-size:10px;
+  text-transform:uppercase;
+  color:#64748b;
+  padding:15px 12px 8px;
+  font-weight:700;
+}
+
+.side-link{
+  width:100%;
+  border:0;
+  background:none;
+  color:#cbd5e1;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:12px;
+  border-radius:10px;
+  text-align:left;
+  margin-bottom:3px;
+  transition:var(--transition);
+}
+
+.side-link:hover,
+.side-link.active{
+  background:rgba(255,255,255,.09);
+  color:white;
+}
+
+.side-link i{
+  width:20px;
+}
+
+.sidebar-bottom{
+  padding:15px;
+  border-top:1px solid rgba(255,255,255,.08);
+}
+
+.main-area{
+  width:calc(100% - 260px);
+  margin-left:260px;
+}
+
+.topbar{
+  height:72px;
+  background:white;
+  border-bottom:1px solid var(--border);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 25px;
+  position:sticky;
+  top:0;
+  z-index:800;
+}
+
+.mobile-menu{
+  display:none;
+  border:0;
+  background:none;
+  font-size:20px;
+}
+
+.topbar-title h2{
+  font-size:18px;
+}
+
+.topbar-title p{
+  font-size:12px;
+  color:var(--muted);
+  margin-top:2px;
+}
+
+.user-menu{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.avatar{
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:var(--primary-light);
+  color:var(--primary);
+  font-weight:800;
+}
+
+.app-content{
+  padding:30px;
+}
+
+/* =========================================================
+   DASHBOARD
+========================================================= */
+
+.dashboard-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  margin-bottom:25px;
+  flex-wrap:wrap;
+}
+
+.dashboard-header h1{
+  font-size:28px;
+}
+
+.dashboard-header p{
+  color:var(--muted);
+  margin-top:5px;
+}
+
+.stat-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:18px;
+  margin-bottom:25px;
+}
+
+.stat-card{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:20px;
+  display:flex;
+  align-items:center;
+  gap:15px;
+}
+
+.stat-icon{
+  width:48px;
+  height:48px;
+  border-radius:13px;
+  background:var(--primary-light);
+  color:var(--primary);
+  display:grid;
+  place-items:center;
+}
+
+.stat-card small{
+  color:var(--muted);
+  font-size:12px;
+}
+
+.stat-card strong{
+  display:block;
+  font-size:23px;
+  margin-top:4px;
+}
+
+/* =========================================================
+   CONTENT CARDS
+========================================================= */
+
+.content-grid{
+  display:grid;
+  grid-template-columns:2fr 1fr;
+  gap:20px;
+}
+
+.panel{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:22px;
+}
+
+.panel-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:18px;
+}
+
+.panel-header h3{
+  font-size:16px;
+}
+
+.panel-header span{
+  color:var(--muted);
+  font-size:12px;
+}
+
+.empty-state{
+  text-align:center;
+  padding:45px 20px;
+  color:var(--muted);
+}
+
+.empty-state i{
+  font-size:35px;
+  margin-bottom:12px;
+}
+
+/* =========================================================
+   MY SYSTEMS
+========================================================= */
+
+.my-system{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+  padding:15px 0;
+  border-bottom:1px solid var(--border);
+}
+
+.my-system:last-child{
+  border-bottom:0;
+}
+
+.my-system-left{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.my-system .system-icon{
+  width:45px;
+  height:45px;
+  border-radius:12px;
+  font-size:17px;
+}
+
+.my-system h4{
+  font-size:14px;
+}
+
+.my-system p{
+  font-size:11px;
+  color:var(--muted);
+  margin-top:3px;
+}
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.modal{
+  position:fixed;
+  inset:0;
+  z-index:2000;
+  background:rgba(15,23,42,.55);
+  display:grid;
+  place-items:center;
+  padding:20px;
+}
+
+.modal-card{
+  width:min(520px,100%);
+  background:white;
+  border-radius:20px;
+  padding:25px;
+  box-shadow:0 25px 80px rgba(0,0,0,.2);
+}
+
+.modal-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:20px;
+}
+
+.modal-close{
+  border:0;
+  background:var(--surface-2);
+  width:35px;
+  height:35px;
+  border-radius:10px;
+}
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+.toast-container{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  z-index:5000;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.toast{
+  min-width:280px;
+  background:#0f172a;
+  color:white;
+  border-radius:12px;
+  padding:14px 16px;
+  box-shadow:var(--shadow);
+  animation:toastIn .3s ease;
+  font-size:13px;
+}
+
+@keyframes toastIn{
+  from{
+    opacity:0;
+    transform:translateY(15px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:850px){
+
+  .sidebar{
+    transform:translateX(-100%);
+  }
+
+  .sidebar.open{
+    transform:translateX(0);
+  }
+
+  .main-area{
+    width:100%;
+    margin-left:0;
+  }
+
+  .mobile-menu{
+    display:block;
+  }
+
+  .content-grid{
+    grid-template-columns:1fr;
+  }
+
+  .app-content{
+    padding:20px;
+  }
+
+  .hero{
+    padding:60px 0 45px;
+  }
+}
+
+@media(max-width:600px){
+
+  .nav-actions .btn-light{
+    display:none;
+  }
+
+  .hero h1{
+    letter-spacing:-1px;
+  }
+
+  .hero p{
+    font-size:15px;
+  }
+
+  .system-section{
+    padding-top:40px;
+  }
+
+  .system-toolbar{
+    align-items:stretch;
+  }
+
+  .search-box{
+    max-width:none;
+  }
+
+  .topbar{
+    padding:0 15px;
+  }
+
+  .topbar-title p{
+    display:none;
+  }
+
+  .user-menu span{
+    display:none;
+  }
+
+  .dashboard-header h1{
+    font-size:23px;
+  }
+
+  .stat-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .stat-card{
+    padding:15px;
+  }
+
+  .stat-card strong{
+    font-size:19px;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =========================================================
+     PUBLIC WEBSITE
+========================================================= -->
+
+<div id="publicScreen">
+
+  <nav class="public-nav">
+    <div class="container nav-inner">
+
+      <a href="#" class="logo" onclick="showPublic();return false;">
+        <span class="logo-icon">
+          <i class="fa-solid fa-layer-group"></i>
+        </span>
+        <span>MyPlatform</span>
+      </a>
+
+      <div class="nav-actions">
+        <button class="btn btn-light" onclick="showLogin()">
+          <i class="fa-solid fa-right-to-bracket"></i>
+          Ingia
+        </button>
+
+        <button class="btn btn-primary" onclick="showRegister()">
+          <i class="fa-solid fa-user-plus"></i>
+          Jisajili
+        </button>
+      </div>
+
+    </div>
+  </nav>
+
+
+  <section class="hero">
+
+    <div class="container hero-content">
+
+      <div class="hero-badge">
+        <i class="fa-solid fa-sparkles"></i>
+        Platform Moja • Mifumo Mingi
+      </div>
+
+      <h1>
+        Karibu kwenye
+        <span>MyPlatform</span>
+      </h1>
+
+      <p>
+        Mfumo mmoja unaokupa huduma mbalimbali za kidigitali.
+        Chagua mfumo unaouhitaji, ingia na uanze kutumia huduma zako
+        bila kuwa na akaunti nyingi.
+      </p>
+
+      <div class="hero-actions">
+
+        <button class="btn btn-primary"
+                onclick="scrollToSystems()">
+          <i class="fa-solid fa-grid-2"></i>
+          Chagua Mfumo
+        </button>
+
+        <button class="btn btn-outline"
+                onclick="showRegister()">
+          Tengeneza Akaunti
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <section class="system-section" id="systemsSection">
+
+    <div class="container">
+
+      <div class="section-heading">
+        <h2>Chagua Mfumo Unaohitaji</h2>
+        <p>Mifumo yote inapatikana kupitia platform moja.</p>
+      </div>
+
+
+      <div class="system-toolbar">
+
+        <div class="search-box">
+
+          <i class="fa-solid fa-search"></i>
+
+          <input
+            id="systemSearch"
+            type="search"
+            placeholder="Tafuta mfumo..."
+            oninput="renderSystems()">
+
+        </div>
+
+        <span id="systemCount"
+              style="color:var(--muted);font-size:13px">
+        </span>
+
+      </div>
+
+
+      <div class="system-grid"
+           id="publicSystemsGrid">
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <section class="features">
+
+    <div class="container">
+
+      <div class="section-heading">
+        <h2>Kwa nini Platform Moja?</h2>
+        <p>Rahisisha matumizi ya mifumo yako yote.</p>
+      </div>
+
+
+      <div class="features-grid">
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fa-solid fa-user-lock"></i>
+          </div>
+          <h3>Account Moja</h3>
+          <p>
+            Mtumiaji anaweza kutumia mifumo mbalimbali
+            kwa akaunti moja.
+          </p>
+        </div>
+
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fa-solid fa-layer-group"></i>
+          </div>
+          <h3>Mifumo Mingi</h3>
+          <p>
+            Ongeza systems mpya bila kujenga website mpya.
+          </p>
+        </div>
+
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+          <h3>Usalama</h3>
+          <p>
+            Kila mfumo unaweza kuwa na permissions
+            na data zake tofauti.
+          </p>
+        </div>
+
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fa-solid fa-chart-line"></i>
+          </div>
+          <h3>Scalable</h3>
+          <p>
+            Architecture inaweza kukua kutoka mifumo 2
+            hadi mifumo mingi zaidi.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <footer>
+
+    <div class="container footer-inner">
+
+      <strong>
+        <i class="fa-solid fa-layer-group"></i>
+        MyPlatform
+      </strong>
+
+      <p>
+        © <span id="footerYear"></span>
+        MyPlatform. All Rights Reserved.
+      </p>
+
+    </div>
+
+  </footer>
+
+</div>
+
+
+<!-- =========================================================
+     AUTH SCREEN
+========================================================= -->
+
+<div id="authScreen" class="auth-screen hidden">
+
+  <div class="auth-card">
+
+    <div class="auth-logo">
+
+      <div class="logo-icon">
+        <i class="fa-solid fa-layer-group"></i>
+      </div>
+
+      <h2 id="authTitle">Ingia</h2>
+
+      <p id="authSubtitle">
+        Ingia kwenye akaunti yako.
+      </p>
+
+    </div>
+
+
+    <form id="authForm"
+          onsubmit="handleAuth(event)">
+
+      <div id="nameGroup"
+           class="form-group hidden">
+
+        <label>Jina Kamili</label>
+
+        <input
+          id="nameInput"
+          type="text"
+          placeholder="Jina lako">
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>Email</label>
+
+        <input
+          id="emailInput"
+          type="email"
+          placeholder="example@email.com"
+          required>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>Password</label>
+
+        <input
+          id="passwordInput"
+          type="password"
+          placeholder="********"
+          required>
+
+      </div>
+
+
+      <button class="btn btn-primary"
+              type="submit"
+              id="authSubmit">
+
+        <i class="fa-solid fa-right-to-bracket"></i>
+        Ingia
+
+      </button>
+
+    </form>
+
+
+    <div class="auth-switch">
+
+      <span id="authSwitchText">
+        Huna akaunti?
+      </span>
+
+      <button id="authSwitchBtn"
+              onclick="toggleAuthMode()">
+        Jisajili
+      </button>
+
+      <br><br>
+
+      <button onclick="showPublic()">
+        ← Rudi kwenye Platform
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =========================================================
+     APPLICATION
+========================================================= -->
+
+<div id="appScreen"
+     class="app-screen hidden">
+
+
+  <!-- SIDEBAR -->
+
+  <aside class="sidebar"
+         id="sidebar">
+
+    <div class="sidebar-logo">
+
+      <a class="logo"
+         href="#"
+         onclick="showApp('dashboard');return false;">
+
+        <span class="logo-icon">
+          <i class="fa-solid fa-layer-group"></i>
+        </span>
+
+        <span>MyPlatform</span>
+
+      </a>
+
+    </div>
+
+
+    <div class="sidebar-system">
+
+      <small>MFUMO UNAOTUMIKA</small>
+
+      <strong id="currentSystemName">
+        System Hub
+      </strong>
+
+    </div>
+
+
+    <nav class="sidebar-nav">
+
+      <div class="nav-label">
+        Main
+      </div>
+
+      <button class="side-link active"
+              data-page="dashboard"
+              onclick="showApp('dashboard')">
+
+        <i class="fa-solid fa-chart-pie"></i>
+        Dashboard
+
+      </button>
+
+
+      <button class="side-link"
+              data-page="mysystems"
+              onclick="showApp('mysystems')">
+
+        <i class="fa-solid fa-layer-group"></i>
+        Mifumo Yangu
+
+      </button>
+
+
+      <div class="nav-label">
+        System
+      </div>
+
+
+      <div id="systemMenu">
+      </div>
+
+
+      <div id="adminMenu"
+           class="hidden">
+
+        <div class="nav-label">
+          Administration
+        </div>
+
+        <button class="side-link"
+                data-page="admin"
+                onclick="showApp('admin')">
+
+          <i class="fa-solid fa-crown"></i>
+          Super Admin
+
+        </button>
+
+      </div>
+
+
+      <div class="nav-label">
+        Account
+      </div>
+
+
+      <button class="side-link"
+              data-page="profile"
+              onclick="showApp('profile')">
+
+        <i class="fa-solid fa-user"></i>
+        Profile
+
+      </button>
+
+
+      <button class="side-link"
+              onclick="logout()">
+
+        <i class="fa-solid fa-right-from-bracket"></i>
+        Toka
+
+      </button>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+      <button class="side-link"
+              onclick="showPublic()">
+
+        <i class="fa-solid fa-globe"></i>
+        Public Website
+
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <!-- MAIN -->
+
+  <main class="main-area">
+
+    <header class="topbar">
+
+      <button class="mobile-menu"
+              onclick="toggleSidebar()">
+
+        <i class="fa-solid fa-bars"></i>
+
+      </button>
+
+
+      <div class="topbar-title">
+
+        <h2 id="topbarTitle">
+          Dashboard
+        </h2>
+
+        <p id="topbarSubtitle">
+          Karibu kwenye MyPlatform
+        </p>
+
+      </div>
+
+
+      <div class="user-menu">
+
+        <span id="topUserName">
+          User
+        </span>
+
+        <div class="avatar"
+             id="userAvatar">
+          U
+        </div>
+
+      </div>
+
+    </header>
+
+
+    <div class="app-content"
+         id="appContent">
+    </div>
+
+  </main>
+
+</div>
+
+
+<!-- =========================================================
+     MODAL
+========================================================= -->
+
+<div id="modal"
+     class="modal hidden">
+
+  <div class="modal-card">
+
+    <div class="modal-header">
+
+      <h3 id="modalTitle">
+        Mfumo
+      </h3>
+
+      <button class="modal-close"
+              onclick="closeModal()">
+
+        <i class="fa-solid fa-xmark"></i>
+
+      </button>
+
+    </div>
+
+    <div id="modalBody"></div>
+
+  </div>
+
+</div>
+
+
+<!-- TOAST -->
+
+<div id="toastContainer"
+     class="toast-container">
+</div>
+
+
+<script>
+
+/* =========================================================
+   PLATFORM CONFIGURATION
+========================================================= */
+
+const PLATFORM = {
+
+  name: "MyPlatform",
+
+  version: "1.0.0",
+
+  defaultSystem: "hub"
+
+};
+
+
+/* =========================================================
+   SYSTEM REGISTRY
+   ADD NEW SYSTEMS HERE
+========================================================= */
+
+const SYSTEMS = [
+
+  {
+    id: "bizora",
+
+    name: "BIZORA",
+
+    description:
+      "Mfumo wa Usimamizi wa Biashara, POS, Stock, Mauzo na Reports.",
+
+    icon: "fa-store",
+
+    color: "#2563eb",
+
+    category: "Business",
+
+    status: "active",
+
+    stats: {
+      users: 1250,
+      modules: 12
+    },
+
+    menu: [
+
+      {
+        id: "pos",
+        name: "POS",
+        icon: "fa-cash-register"
+      },
+
+      {
+        id: "products",
+        name: "Bidhaa",
+        icon: "fa-box"
+      },
+
+      {
+        id: "stock",
+        name: "Stock",
+        icon: "fa-warehouse"
+      },
+
+      {
+        id: "customers",
+        name: "Wateja",
+        icon: "fa-users"
+      },
+
+      {
+        id: "sales",
+        name: "Mauzo",
+        icon: "fa-cart-shopping"
+      },
+
+      {
+        id: "reports",
+        name: "Reports",
+        icon: "fa-chart-column"
+      }
+
+    ]
+
+  },
+
+
+  {
+    id: "tafuta-mtoto",
+
+    name: "TAFUTA MTOTO",
+
+    description:
+      "Mfumo wa kuripoti, kutafuta na kusaidia kuunganisha watoto na familia zao.",
+
+    icon: "fa-child",
+
+    color: "#16a34a",
+
+    category: "Child Protection",
+
+    status: "active",
+
+    stats: {
+      users: 540,
+      modules: 8
+    },
+
+    menu: [
+
+      {
+        id: "report-child",
+        name: "Ripoti Mtoto",
+        icon: "fa-file-circle-plus"
+      },
+
+      {
+        id: "missing",
+        name: "Watoto Waliopotea",
+        icon: "fa-child-reaching"
+      },
+
+      {
+        id: "search",
+        name: "Tafuta Mtoto",
+        icon: "fa-magnifying-glass"
+      },
+
+      {
+        id: "cases",
+        name: "Cases",
+        icon: "fa-folder-open"
+      },
+
+      {
+        id: "families",
+        name: "Familia",
+        icon: "fa-people-roof"
+      },
+
+      {
+        id: "reports",
+        name: "Reports",
+        icon: "fa-chart-column"
+      }
+
+    ]
+
+  },
+
+
+  {
+    id: "vikoba",
+
+    name: "VIKOBA",
+
+    description:
+      "Mfumo wa kusimamia vikundi, wanachama, michango, mikopo na malipo.",
+
+    icon: "fa-people-group",
+
+    color: "#f59e0b",
+
+    category: "Groups",
+
+    status: "active",
+
+    stats: {
+      users: 6420,
+      modules: 10
+    },
+
+    menu: [
+
+      {
+        id: "groups",
+        name: "Vikundi",
+        icon: "fa-users"
+      },
+
+      {
+        id: "members",
+        name: "Wanachama",
+        icon: "fa-user-group"
+      },
+
+      {
+        id: "contributions",
+        name: "Michango",
+        icon: "fa-money-bill-wave"
+      },
+
+      {
+        id: "loans",
+        name: "Mikopo",
+        icon: "fa-hand-holding-dollar"
+      },
+
+      {
+        id: "payments",
+        name: "Malipo",
+        icon: "fa-credit-card"
+      },
+
+      {
+        id: "reports",
+        name: "Reports",
+        icon: "fa-chart-column"
+      }
+
+    ]
+
+  }
+
+];
+
+
+/* =========================================================
+   APPLICATION STATE
+========================================================= */
+
+const STATE = {
+
+  currentUser: null,
+
+  currentSystem: "hub",
+
+  currentPage: "dashboard",
+
+  authMode: "login"
+
+};
+
+
+/* =========================================================
+   DEMO USERS
+========================================================= */
+
+const DEFAULT_USERS = [
+
+  {
+    id: "super-001",
+
+    name: "Super Administrator",
+
+    email: "super@myplatform.com",
+
+    password: "123456",
+
+    role: "superadmin",
+
+    systems: [
+      "bizora",
+      "tafuta-mtoto",
+      "vikoba"
+    ]
+
+  }
+
+];
+
+
+/* =========================================================
+   STORAGE
+========================================================= */
+
+function getUsers(){
+
+  try{
+
+    return JSON.parse(
+      localStorage.getItem("platform_users")
+    ) || DEFAULT_USERS;
+
+  }catch(error){
+
+    console.error(error);
+
+    return DEFAULT_USERS;
+
+  }
+
+}
+
+
+function saveUsers(users){
+
+  localStorage.setItem(
+    "platform_users",
+    JSON.stringify(users)
+  );
+
+}
+
+
+function getSession(){
+
+  try{
+
+    return JSON.parse(
+      localStorage.getItem("platform_session")
+    );
+
+  }catch(error){
+
+    return null;
+
+  }
+
+}
+
+
+function saveSession(user){
+
+  localStorage.setItem(
+    "platform_session",
+    JSON.stringify(user)
+  );
+
+}
+
+
+function clearSession(){
+
+  localStorage.removeItem(
+    "platform_session"
+  );
+
+}
+
+
+/* =========================================================
+   INITIALIZATION
+========================================================= */
+
+document.addEventListener(
+  "DOMContentLoaded",
+  init
+);
+
+
+function init(){
+
+  document.getElementById(
+    "footerYear"
+  ).textContent = new Date().getFullYear();
+
+
+  const session = getSession();
+
+  if(session){
+
+    STATE.currentUser = session;
+
+    STATE.currentSystem = "hub";
+
+    showApp("dashboard");
+
+  }else{
+
+    showPublic();
+
+  }
+
+
+  renderSystems();
+
+}
+
+
+/* =========================================================
+   SCREEN MANAGEMENT
+========================================================= */
+
+function showPublic(){
+
+  closeModal();
+
+  document
+    .getElementById("publicScreen")
+    .classList.remove("hidden");
+
+  document
+    .getElementById("authScreen")
+    .classList.add("hidden");
+
+  document
+    .getElementById("appScreen")
+    .classList.add("hidden");
+
+}
+
+
+function showLogin(){
+
+  STATE.authMode = "login";
+
+  renderAuth();
+
+  document
+    .getElementById("publicScreen")
+    .classList.add("hidden");
+
+  document
+    .getElementById("authScreen")
+    .classList.remove("hidden");
+
+}
+
+
+function showRegister(){
+
+  STATE.authMode = "register";
+
+  renderAuth();
+
+  document
+    .getElementById("publicScreen")
+    .classList.add("hidden");
+
+  document
+    .getElementById("authScreen")
+    .classList.remove("hidden");
+
+}
+
+
+function renderAuth(){
+
+  const register =
+    STATE.authMode === "register";
+
+
+  document.getElementById(
+    "authTitle"
+  ).textContent =
+    register ? "Tengeneza Akaunti" : "Ingia";
+
+
+  document.getElementById(
+    "authSubtitle"
+  ).textContent =
+    register
+      ? "Fungua akaunti yako ya MyPlatform."
+      : "Ingia kwenye akaunti yako.";
+
+
+  document.getElementById(
+    "nameGroup"
+  ).classList.toggle(
+    "hidden",
+    !register
+  );
+
+
+  document.getElementById(
+    "authSubmit"
+  ).innerHTML =
+    register
+      ? '<i class="fa-solid fa-user-plus"></i> Jisajili'
+      : '<i class="fa-solid fa-right-to-bracket"></i> Ingia';
+
+
+  document.getElementById(
+    "authSwitchText"
+  ).textContent =
+    register
+      ? "Una akaunti tayari?"
+      : "Huna akaunti?";
+
+
+  document.getElementById(
+    "authSwitchBtn"
+  ).textContent =
+    register
+      ? "Ingia"
+      : "Jisajili";
+
+
+  document.getElementById(
+    "authForm"
+  ).reset();
+
+}
+
+
+/* =========================================================
+   AUTH MODE
+========================================================= */
+
+function toggleAuthMode(){
+
+  if(STATE.authMode === "login"){
+
+    showRegister();
+
+  }else{
+
+    showLogin();
+
+  }
+
+}
+
+
+/* =========================================================
+   LOGIN / REGISTER
+========================================================= */
+
+function handleAuth(event){
+
+  event.preventDefault();
+
+
+  const name =
+    document
+      .getElementById("nameInput")
+      .value
+      .trim();
+
+
+  const email =
+    document
+      .getElementById("emailInput")
+      .value
+      .trim()
+      .toLowerCase();
+
+
+  const password =
+    document
+      .getElementById("passwordInput")
+      .value;
+
+
+  if(!email || !password){
+
+    toast(
+      "Jaza Email na Password.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  const users = getUsers();
+
+
+  /* REGISTER */
+
+  if(STATE.authMode === "register"){
+
+    if(!name){
+
+      toast(
+        "Weka jina lako.",
+        "error"
+      );
+
+      return;
+
+    }
+
+
+    if(password.length < 6){
+
+      toast(
+        "Password lazima iwe na angalau characters 6.",
+        "error"
+      );
+
+      return;
+
+    }
+
+
+    const exists =
+      users.some(
+        user => user.email === email
+      );
+
+
+    if(exists){
+
+      toast(
+        "Email hii tayari imesajiliwa.",
+        "error"
+      );
+
+      return;
+
+    }
+
+
+    const newUser = {
+
+      id:
+        "user-" +
+        Date.now(),
+
+      name,
+
+      email,
+
+      password,
+
+      role: "user",
+
+      systems: []
+
+    };
+
+
+    users.push(newUser);
+
+    saveUsers(users);
+
+    saveSession(newUser);
+
+    STATE.currentUser = newUser;
+
+    toast(
+      "Akaunti imeundwa kikamilifu.",
+      "success"
+    );
+
+    showApp("dashboard");
+
+    return;
+
+  }
+
+
+  /* LOGIN */
+
+  const user =
+    users.find(
+      item =>
+        item.email === email &&
+        item.password === password
+    );
+
+
+  if(!user){
+
+    toast(
+      "Email au password si sahihi.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  STATE.currentUser = user;
+
+  saveSession(user);
+
+  toast(
+    "Umeingia kikamilifu.",
+    "success"
+  );
+
+  showApp("dashboard");
+
+}
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+function logout(){
+
+  clearSession();
+
+  STATE.currentUser = null;
+
+  STATE.currentSystem = "hub";
+
+  showPublic();
+
+  toast(
+    "Umetoka kwenye akaunti.",
+    "success"
+  );
+
+}
+
+
+/* =========================================================
+   SCROLL
+========================================================= */
+
+function scrollToSystems(){
+
+  document
+    .getElementById("systemsSection")
+    .scrollIntoView({
+      behavior:"smooth"
+    });
+
+}
+
+
+/* =========================================================
+   SYSTEM SEARCH / RENDER
+========================================================= */
+
+function renderSystems(){
+
+  const grid =
+    document.getElementById(
+      "publicSystemsGrid"
+    );
+
+
+  const search =
+    (
+      document.getElementById(
+        "systemSearch"
+      )?.value || ""
+    )
+    .toLowerCase()
+    .trim();
+
+
+  const filtered =
+    SYSTEMS.filter(system => {
+
+      const text =
+        (
+          system.name +
+          " " +
+          system.description +
+          " " +
+          system.category
+        ).toLowerCase();
+
+      return text.includes(search);
+
+    });
+
+
+  document.getElementById(
+    "systemCount"
+  ).textContent =
+    `${filtered.length} mfumo`;
+
+
+  if(!filtered.length){
+
+    grid.innerHTML = `
+
+      <div class="empty-state"
+           style="grid-column:1/-1">
+
+        <i class="fa-solid fa-magnifying-glass"></i>
+
+        <p>Hakuna mfumo uliopatikana.</p>
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  grid.innerHTML =
+    filtered
+      .map(system => systemCardHTML(system))
+      .join("");
+
+}
+
+
+/* =========================================================
+   SYSTEM CARD
+========================================================= */
+
+function systemCardHTML(system){
+
+  return `
+
+    <article class="system-card">
+
+      <div class="system-card-top">
+
+        <div
+          class="system-icon"
+          style="background:${system.color}">
+
+          <i class="fa-solid ${system.icon}"></i>
+
+        </div>
+
+        <span class="system-status">
+          Active
+        </span>
+
+      </div>
+
+
+      <h3>
+        ${escapeHTML(system.name)}
+      </h3>
+
+
+      <p>
+        ${escapeHTML(system.description)}
+      </p>
+
+
+      <div class="system-meta">
+
+        <span class="meta-item">
+          <i class="fa-solid fa-layer-group"></i>
+          ${system.stats.modules} Modules
+        </span>
+
+        <span class="meta-item">
+          <i class="fa-solid fa-users"></i>
+          ${formatNumber(system.stats.users)}
+        </span>
+
+      </div>
+
+
+      <button
+        class="btn btn-primary"
+        onclick="openSystem('${system.id}')">
+
+        <i class="fa-solid fa-arrow-right"></i>
+        Fungua Mfumo
+
+      </button>
+
+    </article>
+
+  `;
+
+}
+
+
+/* =========================================================
+   OPEN SYSTEM
+========================================================= */
+
+function openSystem(systemId){
+
+  if(!STATE.currentUser){
+
+    showLogin();
+
+    toast(
+      "Ingia kwanza ili kutumia mfumo.",
+      "info"
+    );
+
+    return;
+
+  }
+
+
+  const system =
+    getSystem(systemId);
+
+
+  if(!system){
+
+    toast(
+      "Mfumo haujapatikana.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  /*
+    Super Admin ana access systems zote.
+    User wa kawaida ana access systems
+    zilizo kwenye user.systems.
+  */
+
+  const isSuper =
+    STATE.currentUser.role === "superadmin";
+
+
+  const allowed =
+    isSuper ||
+    STATE.currentUser.systems.includes(systemId);
+
+
+  if(!allowed){
+
+    showSystemAccessModal(system);
+
+    return;
+
+  }
+
+
+  STATE.currentSystem = systemId;
+
+  STATE.currentPage = "dashboard";
+
+  showApp("dashboard");
+
+}
+
+
+/* =========================================================
+   ACCESS REQUEST MODAL
+========================================================= */
+
+function showSystemAccessModal(system){
+
+  openModal(
+
+    `Fungua ${system.name}`,
+
+    `
+
+      <div style="text-align:center;padding:10px">
+
+        <div
+          class="system-icon"
+          style="
+            background:${system.color};
+            margin:0 auto 18px;
+          ">
+
+          <i class="fa-solid ${system.icon}"></i>
+
+        </div>
+
+
+        <h3 style="margin-bottom:10px">
+          ${escapeHTML(system.name)}
+        </h3>
+
+
+        <p style="
+          color:var(--muted);
+          line-height:1.6;
+          margin-bottom:20px;
+        ">
+
+          Akaunti yako bado haina access ya
+          kutumia mfumo huu.
+
+        </p>
+
+
+        <button
+          class="btn btn-primary"
+          style="width:100%"
+          onclick="requestSystemAccess('${system.id}')">
+
+          <i class="fa-solid fa-paper-plane"></i>
+          Omba Access
+
+        </button>
+
+      </div>
+
+    `
+
+  );
+
+}
+
+
+/* =========================================================
+   REQUEST ACCESS
+========================================================= */
+
+function requestSystemAccess(systemId){
+
+  closeModal();
+
+  toast(
+    "Ombi lako limetumwa kwa Administrator.",
+    "success"
+  );
+
+}
+
+
+/* =========================================================
+   GET SYSTEM
+========================================================= */
+
+function getSystem(systemId){
+
+  return SYSTEMS.find(
+    system => system.id === systemId
+  );
+
+}
+
+
+/* =========================================================
+   APP SCREEN
+========================================================= */
+
+function showApp(page = "dashboard"){
+
+  if(!STATE.currentUser){
+
+    showLogin();
+
+    return;
+
+  }
+
+
+  document
+    .getElementById("publicScreen")
+    .classList.add("hidden");
+
+
+  document
+    .getElementById("authScreen")
+    .classList.add("hidden");
+
+
+  document
+    .getElementById("appScreen")
+    .classList.remove("hidden");
+
+
+  STATE.currentPage = page;
+
+
+  updateUserUI();
+
+  renderSidebar();
+
+  renderPage(page);
+
+}
+
+
+/* =========================================================
+   UPDATE USER UI
+========================================================= */
+
+function updateUserUI(){
+
+  const user =
+    STATE.currentUser;
+
+
+  document.getElementById(
+    "topUserName"
+  ).textContent =
+    user.name;
+
+
+  document.getElementById(
+    "userAvatar"
+  ).textContent =
+    getInitials(user.name);
+
+}
+
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+function renderSidebar(){
+
+  const system =
+    getSystem(
+      STATE.currentSystem
+    );
+
+
+  document.getElementById(
+    "currentSystemName"
+  ).textContent =
+    system
+      ? system.name
+      : "System Hub";
+
+
+  const systemMenu =
+    document.getElementById(
+      "systemMenu"
+    );
+
+
+  if(!system){
+
+    systemMenu.innerHTML = "";
+
+  }else{
+
+    systemMenu.innerHTML = `
+
+      <div class="nav-label">
+        ${escapeHTML(system.name)}
+      </div>
+
+      ${system.menu.map(item => `
+
+        <button
+          class="side-link"
+          data-page="module-${item.id}"
+          onclick="openModule('${item.id}')">
+
+          <i class="fa-solid ${item.icon}"></i>
+
+          ${escapeHTML(item.name)}
+
+        </button>
+
+      `).join("")}
+
+    `;
+
+  }
+
+
+  const adminMenu =
+    document.getElementById(
+      "adminMenu"
+    );
+
+
+  adminMenu.classList.toggle(
+    "hidden",
+    STATE.currentUser.role !== "superadmin"
+  );
+
+
+  document
+    .querySelectorAll(".side-link")
+    .forEach(link => {
+
+      link.classList.remove("active");
+
+      if(
+        link.dataset.page ===
+        STATE.currentPage
+      ){
+
+        link.classList.add("active");
+
+      }
+
+    });
+
+}
+
+
+/* =========================================================
+   RENDER PAGE
+========================================================= */
+
+function renderPage(page){
+
+  const content =
+    document.getElementById(
+      "appContent"
+    );
+
+
+  const system =
+    getSystem(
+      STATE.currentSystem
+    );
+
+
+  const title =
+    document.getElementById(
+      "topbarTitle"
+    );
+
+
+  const subtitle =
+    document.getElementById(
+      "topbarSubtitle"
+    );
+
+
+  if(page === "dashboard"){
+
+    title.textContent =
+      system
+        ? system.name
+        : "Dashboard";
+
+
+    subtitle.textContent =
+      system
+        ? system.description
+        : "Karibu kwenye MyPlatform";
+
+
+    content.innerHTML =
+      renderDashboard(system);
+
+    return;
+
+  }
+
+
+  if(page === "mysystems"){
+
+    title.textContent =
+      "Mifumo Yangu";
+
+    subtitle.textContent =
+      "Mifumo inayopatikana kwenye akaunti yako.";
+
+    content.innerHTML =
+      renderMySystems();
+
+    return;
+
+  }
+
+
+  if(page === "profile"){
+
+    title.textContent =
+      "Profile";
+
+    subtitle.textContent =
+      "Simamia taarifa za akaunti yako.";
+
+    content.innerHTML =
+      renderProfile();
+
+    return;
+
+  }
+
+
+  if(page === "admin"){
+
+    title.textContent =
+      "Super Admin";
+
+    subtitle.textContent =
+      "Usimamizi wa platform nzima.";
+
+    content.innerHTML =
+      renderAdmin();
+
+    return;
+
+  }
+
+
+  if(page.startsWith("module-")){
+
+    const moduleId =
+      page.replace(
+        "module-",
+        ""
+      );
+
+    const module =
+      system?.menu.find(
+        item =>
+          item.id === moduleId
+      );
+
+
+    title.textContent =
+      module
+        ? module.name
+        : "Module";
+
+
+    subtitle.textContent =
+      system
+        ? system.name
+        : "";
+
+
+    content.innerHTML =
+      renderModule(
+        system,
+        module
+      );
+
+    return;
+
+  }
+
+
+  content.innerHTML =
+    renderDashboard(system);
+
+}
+
+
+/* =========================================================
+   DASHBOARD HTML
+========================================================= */
+
+function renderDashboard(system){
+
+  if(!system){
+
+    return renderHubDashboard();
+
+  }
+
+
+  const stats =
+    getSystemDashboardStats(
+      system.id
+    );
+
+
+  return `
+
+    <div class="dashboard-header">
+
+      <div>
+
+        <h1>
+          ${escapeHTML(system.name)}
+        </h1>
+
+        <p>
+          ${escapeHTML(system.description)}
+        </p>
+
+      </div>
+
+
+      <button
+        class="btn btn-outline"
+        onclick="showApp('mysystems')">
+
+        <i class="fa-solid fa-layer-group"></i>
+        Badili Mfumo
+
+      </button>
+
+    </div>
+
+
+    <div class="stat-grid">
+
+      <div class="stat-card">
+
+        <div class="stat-icon">
+          <i class="fa-solid fa-users"></i>
+        </div>
+
+        <div>
+          <small>Users</small>
+          <strong>
+            ${formatNumber(stats.users)}
+          </strong>
+        </div>
+
+      </div>
+
+
+      <div class="stat-card">
+
+        <div class="stat-icon">
+          <i class="fa-solid fa-layer-group"></i>
+        </div>
+
+        <div>
+          <small>Modules</small>
+          <strong>
+            ${stats.modules}
+          </strong>
+        </div>
+
+      </div>
+
+
+      <div class="stat-card">
+
+        <div class="stat-icon">
+          <i class="fa-solid fa-chart-line"></i>
+        </div>
+
+        <div>
+          <small>Status</small>
+          <strong style="font-size:16px">
+            Active
+          </strong>
+        </div>
+
+      </div>
+
+
+      <div class="stat-card">
+
+        <div class="stat-icon">
+          <i class="fa-solid fa-shield-halved"></i>
+        </div>
+
+        <div>
+          <small>Access</small>
+          <strong style="font-size:16px">
+            Granted
+          </strong>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="content-grid">
+
+      <div class="panel">
+
+        <div class="panel-header">
+
+          <h3>
+            Modules za ${escapeHTML(system.name)}
+          </h3>
+
+          <span>
+            ${system.menu.length} modules
+          </span>
+
+        </div>
+
+
+        ${system.menu.map(item => `
+
+          <div class="my-system">
+
+            <div class="my-system-left">
+
+              <div
+                class="system-icon"
+                style="background:${system.color}">
+
+                <i class="fa-solid ${item.icon}"></i>
+
+              </div>
+
+              <div>
+
+                <h4>
+                  ${escapeHTML(item.name)}
+                </h4>
+
+                <p>
+                  Fungua ${escapeHTML(item.name)}
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <button
+              class="btn btn-light"
+              onclick="openModule('${item.id}')">
+
+              Fungua
+
+            </button>
+
+          </div>
+
+        `).join("")}
+
+      </div>
+
+
+      <div class="panel">
+
+        <div class="panel-header">
+
+          <h3>Account</h3>
+
+        </div>
+
+
+        <div class="empty-state">
+
+          <i class="fa-solid fa-circle-check"
+             style="color:var(--success)">
+          </i>
+
+          <p>
+            Akaunti yako iko active.
+          </p>
+
+          <br>
+
+          <button
+            class="btn btn-outline"
+            onclick="showApp('profile')">
+
+            Profile
+
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =========================================================
+   HUB DASHBOARD
+========================================================= */
+
+function renderHubDashboard(){
+
+  const systems =
+    SYSTEMS.filter(
+      system =>
+        STATE.currentUser.role === "superadmin" ||
+        STATE.currentUser.systems.includes(system.id)
+    );
+
+
+  return `
+
+    <div class="dashboard-header">
+
+      <div>
+
+        <h1>
+          Karibu, ${escapeHTML(STATE.currentUser.name)}
+        </h1>
+
+        <p>
+          Chagua mfumo unaotaka kutumia.
+        </p>
+
+      </div>
+
+
+      <button
+        class="btn btn-primary"
+        onclick="showApp('mysystems')">
+
+        <i class="fa-solid fa-layer-group"></i>
+        Mifumo Yangu
+
+      </button>
+
+    </div>
+
+
+    <div class="stat-grid">
+
+      <div class="stat-card">
+
+        <div class="stat-icon">
+          <i class="fa-solid fa-layer-group"></i>
+        </div>
+
+        <div>
+          <small>Mifumo Yangu</small>
+
+          <strong>
+            ${systems.length}
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <div class="stat-card">
+
+        <div class="stat-icon">
+          <i class="fa-solid fa-user-shield"></i>
+        </div>
+
+        <div>
+
+          <small>Role</small>
+
+          <strong style="font-size:15px">
+            ${STATE.currentUser.role}
+          </strong>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="panel">
+
+      <div class="panel-header">
+
+        <h3>
+          Mifumo Inayopatikana
+        </h3>
+
+      </div>
+
+
+      ${systems.length
+        ? systems.map(system => `
+
+          <div class="my-system">
+
+            <div class="my-system-left">
+
+              <div
+                class="system-icon"
+                style="background:${system.color}">
+
+                <i class="fa-solid ${system.icon}"></i>
+
+              </div>
+
+              <div>
+
+                <h4>
+                  ${escapeHTML(system.name)}
+                </h4>
+
+                <p>
+                  ${escapeHTML(system.description)}
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <button
+              class="btn btn-primary"
+              onclick="openSystem('${system.id}')">
+
+              Fungua
+
+            </button>
+
+          </div>
+
+        `).join("")
+        : `
+
+          <div class="empty-state">
+
+            <i class="fa-solid fa-layer-group"></i>
+
+            <p>
+              Huna mfumo uliowekwa kwenye akaunti yako.
+            </p>
+
+          </div>
+
+        `
+      }
+
+    </div>
+
+  `;
+
+}
+
+
+/* =========================================================
+   MY SYSTEMS
+========================================================= */
+
+function renderMySystems(){
+
+  const systems =
+    STATE.currentUser.role === "superadmin"
+      ? SYSTEMS
+      : SYSTEMS.filter(
+          system =>
+            STATE.currentUser.systems
+              .includes(system.id)
+        );
+
+
+  return `
+
+    <div class="dashboard-header">
+
+      <div>
+
+        <h1>Mifumo Yangu</h1>
+
+        <p>
+          Chagua mfumo wa kuendelea nao.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="system-grid">
+
+      ${
+        systems.length
+
+        ? systems
+            .map(system =>
+              systemCardHTML(system)
+            )
+            .join("")
+
+        : `
+
+          <div
+            class="empty-state"
+            style="grid-column:1/-1">
+
+            <i class="fa-solid fa-layer-group"></i>
+
+            <h3>
+              Hakuna mfumo
+            </h3>
+
+            <p>
+              Akaunti yako bado haina mfumo.
+            </p>
+
+          </div>
+
+        `
+      }
+
+    </div>
+
+  `;
+
+}
+
+
+/* =========================================================
+   PROFILE
+========================================================= */
+
+function renderProfile(){
+
+  const user =
+    STATE.currentUser;
+
+
+  return `
+
+    <div class="dashboard-header">
+
+      <div>
+
+        <h1>Profile</h1>
+
+        <p>
+          Taarifa za akaunti yako.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="panel"
+         style="max-width:700px">
+
+      <div style="
+        display:flex;
+        align-items:center;
+        gap:18px;
+        margin-bottom:25px;
+      ">
+
+        <div
+          class="avatar"
+          style="
+            width:70px;
+            height:70px;
+            font-size:22px;
+          ">
+
+          ${getInitials(user.name)}
+
+        </div>
+
+
+        <div>
+
+          <h2>
+            ${escapeHTML(user.name)}
+          </h2>
+
+          <p style="
+            color:var(--muted);
+            margin-top:4px;
+          ">
+
+            ${escapeHTML(user.email)}
+
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>Jina</label>
+
+        <input
+          value="${escapeAttribute(user.name)}"
+          disabled>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>Email</label>
+
+        <input
+          value="${escapeAttribute(user.email)}"
+          disabled>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>Role</label>
+
+        <input
+          value="${escapeAttribute(user.role)}"
+          disabled>
+
+      </div>
+
+
+      <button
+        class="btn btn-danger"
+        onclick="logout()">
+
+        <i class="fa-solid fa-right-from-bracket"></i>
+        Toka
+
+      </button>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =========================================================
+   SUPER ADMIN
+========================================================= */
+
+function renderAdmin(){
+
+  if(
+    STATE.currentUser.role !==
+    "superadmin"
+  ){
+
+    return `
+
+      <div class="panel">
+
+        <div class="empty-state">
+
+          <i class="fa-solid fa-lock"></i>
+
+          <h3>
+            Access Denied
+          </h3>
+
+          <p>
+            Huna ruhusa ya kufungua ukurasa huu.
+          </p>
+
+        </div>
+
+      </div>
+
+    `;
+
+  }
+
+
+  const users =
+    getUsers();
+
+
+  return `
+
+    <div class="dashboard-header">
+
+      <div>
+
+        <h1>
+          Super Admin
+        </h1>
+
+        <p>
+          Simamia platform, systems na users.
+        </p>
+
+      </div>
+
+
+      <span class="system-status">
+        PLATFORM ACTIVE
+      </span>
+
+    </div>
+
+
+    <div class="stat-grid">
+
+      <div class="stat-card">
+
+        <div class="stat-icon">
+          <i class="fa-solid fa-users"></i>
+        </div>
+
+        <div>
+
+          <small>Users</small>
+
+          <strong>
+            ${users.length}
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <div class="stat-card">
+
+        <div class="stat-icon">
+          <i class="fa-solid fa-layer-group"></i>
+        </div>
+
+        <div>
+
+          <small>Systems</small>
+
+          <strong>
+            ${SYSTEMS.length}
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <div class="stat-card">
+
+        <div class="stat-icon">
+          <i class="fa-solid fa-shield-halved"></i>
+        </div>
+
+        <div>
+
+          <small>Admin</small>
+
+          <strong>
+            1
+          </strong>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="content-grid">
+
+      <div class="panel">
+
+        <div class="panel-header">
+
+          <h3>
+            Systems
+          </h3>
+
+          <span>
+            ${SYSTEMS.length}
+          </span>
+
+        </div>
+
+
+        ${SYSTEMS.map(system => `
+
+          <div class="my-system">
+
+            <div class="my-system-left">
+
+              <div
+                class="system-icon"
+                style="background:${system.color}">
+
+                <i class="fa-solid ${system.icon}"></i>
+
+              </div>
+
+              <div>
+
+                <h4>
+                  ${escapeHTML(system.name)}
+                </h4>
+
+                <p>
+                  ${system.category}
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <span class="system-status">
+              Active
+            </span>
+
+          </div>
+
+        `).join("")}
+
+      </div>
+
+
+      <div class="panel">
+
+        <div class="panel-header">
+
+          <h3>
+            Users
+          </h3>
+
+          <span>
+            ${users.length}
+          </span>
+
+        </div>
+
+
+        ${users.map(user => `
+
+          <div class="my-system">
+
+            <div class="my-system-left">
+
+              <div class="avatar">
+                ${getInitials(user.name)}
+              </div>
+
+              <div>
+
+                <h4>
+                  ${escapeHTML(user.name)}
+                </h4>
+
+                <p>
+                  ${escapeHTML(user.email)}
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        `).join("")}
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =========================================================
+   MODULE
+========================================================= */
+
+function openModule(moduleId){
+
+  STATE.currentPage =
+    "module-" + moduleId;
+
+  renderSidebar();
+
+  renderPage(
+    STATE.currentPage
+  );
+
+  closeSidebar();
+
+}
+
+
+/* =========================================================
+   MODULE CONTENT
+========================================================= */
+
+function renderModule(system,module){
+
+  if(!system || !module){
+
+    return `
+
+      <div class="panel">
+
+        <div class="empty-state">
+
+          <i class="fa-solid fa-circle-exclamation"></i>
+
+          <h3>
+            Module haijapatikana
+          </h3>
+
+        </div>
+
+      </div>
+
+    `;
+
+  }
+
+
+  return `
+
+    <div class="dashboard-header">
+
+      <div>
+
+        <h1>
+          ${escapeHTML(module.name)}
+        </h1>
+
+        <p>
+          ${escapeHTML(system.name)}
+        </p>
+
+      </div>
+
+
+      <button
+        class="btn btn-outline"
+        onclick="showApp('dashboard')">
+
+        <i class="fa-solid fa-arrow-left"></i>
+        Dashboard
+
+      </button>
+
+    </div>
+
+
+    <div class="panel">
+
+      <div class="empty-state">
+
+        <div
+          class="system-icon"
+          style="
+            background:${system.color};
+            margin:0 auto 18px;
+          ">
+
+          <i class="fa-solid ${module.icon}"></i>
+
+        </div>
+
+
+        <h2>
+          ${escapeHTML(module.name)}
+        </h2>
+
+
+        <p style="margin-top:8px">
+
+          Hapa ndipo functionality ya
+          <strong>
+            ${escapeHTML(module.name)}
+          </strong>
+          ya ${escapeHTML(system.name)}
+          itawekwa.
+
+        </p>
+
+
+        <div style="margin-top:20px">
+
+          <span class="system-status">
+            MODULE READY
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =========================================================
+   SYSTEM DASHBOARD STATS
+========================================================= */
+
+function getSystemDashboardStats(systemId){
+
+  const system =
+    getSystem(systemId);
+
+
+  if(!system){
+
+    return {
+      users:0,
+      modules:0
+    };
+
+  }
+
+
+  return {
+
+    users:
+      system.stats.users,
+
+    modules:
+      system.menu.length
+
+  };
+
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+function openModal(title,body){
+
+  document.getElementById(
+    "modalTitle"
+  ).textContent = title;
+
+
+  document.getElementById(
+    "modalBody"
+  ).innerHTML = body;
+
+
+  document.getElementById(
+    "modal"
+  ).classList.remove("hidden");
+
+}
+
+
+function closeModal(){
+
+  document.getElementById(
+    "modal"
+  ).classList.add("hidden");
+
+}
+
+
+document
+  .getElementById("modal")
+  .addEventListener(
+    "click",
+    function(event){
+
+      if(event.target === this){
+
+        closeModal();
+
+      }
+
+    }
+  );
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+function toast(message,type="info"){
+
+  const container =
+    document.getElementById(
+      "toastContainer"
+    );
+
+
+  const item =
+    document.createElement("div");
+
+
+  item.className =
+    "toast";
+
+
+  let icon =
+    "fa-circle-info";
+
+
+  if(type === "success")
+    icon = "fa-circle-check";
+
+
+  if(type === "error")
+    icon = "fa-circle-exclamation";
+
+
+  item.innerHTML = `
+
+    <i class="fa-solid ${icon}"></i>
+    &nbsp;
+    ${escapeHTML(message)}
+
+  `;
+
+
+  container.appendChild(item);
+
+
+  setTimeout(() => {
+
+    item.remove();
+
+  },3500);
+
+}
+
+
+/* =========================================================
+   SIDEBAR MOBILE
+========================================================= */
+
+function toggleSidebar(){
+
+  document
+    .getElementById("sidebar")
+    .classList.toggle("open");
+
+}
+
+
+function closeSidebar(){
+
+  document
+    .getElementById("sidebar")
+    .classList.remove("open");
+
+}
+
+
+/* =========================================================
+   HELPERS
+========================================================= */
+
+function getInitials(name){
+
+  if(!name)
+    return "U";
+
+
+  return name
+    .split(" ")
+    .filter(Boolean)
+    .slice(0,2)
+    .map(
+      word =>
+        word.charAt(0).toUpperCase()
+    )
+    .join("");
+
+}
+
+
+function formatNumber(number){
+
+  return Number(number || 0)
+    .toLocaleString();
+
+}
+
+
+function escapeHTML(value){
+
+  return String(value ?? "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
+
+
+function escapeAttribute(value){
+
+  return escapeHTML(value);
+
+}
+
+
+/* =========================================================
+   KEYBOARD ESCAPE
+========================================================= */
+
+document.addEventListener(
+  "keydown",
+  function(event){
+
+    if(event.key === "Escape"){
+
+      closeModal();
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   PREVENT MODAL SCROLL ISSUES
+========================================================= */
+
+document
+  .getElementById("modal")
+  .addEventListener(
+    "wheel",
+    function(event){
+
+      event.stopPropagation();
+
+    }
+  );
+
+
+/* =========================================================
+   DEMO SYSTEM ACCESS
+========================================================= */
+
+/*
+  Kwa demo:
+  User mpya hana system yoyote.
+
+  Super Admin:
+  ana systems zote.
+
+  Ili kumpa user system manually
+  unaweza kutumia:
+
+  grantSystem("user-id","bizora");
+
+*/
+
+function grantSystem(userId,systemId){
+
+  const users =
+    getUsers();
+
+
+  const user =
+    users.find(
+      item =>
+        item.id === userId
+    );
+
+
+  if(!user)
+    return false;
+
+
+  if(!user.systems.includes(systemId)){
+
+    user.systems.push(systemId);
+
+  }
+
+
+  saveUsers(users);
+
+
+  if(
+    STATE.currentUser &&
+    STATE.currentUser.id === userId
+  ){
+
+    STATE.currentUser = user;
+
+    saveSession(user);
+
+  }
+
+
+  return true;
+
+}
+
+
+/* =========================================================
+   REVOKE SYSTEM
+========================================================= */
+
+function revokeSystem(userId,systemId){
+
+  const users =
+    getUsers();
+
+
+  const user =
+    users.find(
+      item =>
+        item.id === userId
+    );
+
+
+  if(!user)
+    return false;
+
+
+  user.systems =
+    user.systems.filter(
+      id =>
+        id !== systemId
+    );
+
+
+  saveUsers(users);
+
+
+  if(
+    STATE.currentUser &&
+    STATE.currentUser.id === userId
+  ){
+
+    STATE.currentUser = user;
+
+    saveSession(user);
+
+  }
+
+
+  return true;
+
+}
+
+
+/* =========================================================
+   ADD NEW SYSTEM HELPER
+========================================================= */
+
+/*
+  Mfano:
+
+  addSystem({
+    id:"school",
+    name:"SCHOOL MANAGEMENT",
+    description:"Mfumo wa shule",
+    icon:"fa-school",
+    color:"#7c3aed",
+    category:"Education",
+    status:"active",
+    stats:{
+      users:100,
+      modules:8
+    },
+    menu:[
+      {
+        id:"students",
+        name:"Students",
+        icon:"fa-user-graduate"
+      }
+    ]
+  });
+
+*/
+
+function addSystem(system){
+
+  if(!system || !system.id)
+    return false;
+
+
+  if(
+    SYSTEMS.some(
+      item =>
+        item.id === system.id
+    )
+  ){
+
+    console.warn(
+      "System already exists:",
+      system.id
+    );
+
+    return false;
+
+  }
+
+
+  SYSTEMS.push(system);
+
+  renderSystems();
+
+  return true;
+
+}
+
+
+/* =========================================================
+   CONSOLE INFORMATION
+========================================================= */
+
+console.log(
+  "%c MyPlatform ",
+  "background:#2563eb;color:white;font-size:18px;font-weight:bold;padding:8px"
+);
+
+console.log(
+  "Platform initialized successfully."
+);
+
+console.log(
+  "Registered systems:",
+  SYSTEMS.map(system => system.id)
+);
+
+console.log(
+  "Demo Super Admin:",
+  "super@myplatform.com / 123456"
+);
+
+</script>
+
+</body>
+</html>
